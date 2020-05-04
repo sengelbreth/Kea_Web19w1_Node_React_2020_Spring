@@ -15,6 +15,14 @@ const knex = Knex(knexFile.development);
 // Give the knex instance to objection.
 Model.knex(knex);
 
+const session = require('express-session');
+
+app.use(session({
+    secret: `this is a secret and shouldn't be shared in version control etc.`,
+    resave: false,
+    saveUninitialized: true
+}));
+
 // Limit the amount of requests on the auth routes
 const rateLimit = require("express-rate-limit");
 

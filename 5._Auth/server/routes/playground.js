@@ -19,5 +19,13 @@ router.get("/secondpath", (req, res) => {
     return res.send({ response: "second path" });
 });
 
+router.get("/setsessionvalue", (req, res) => {
+    req.session.sessionvalue = req.query.sessionvalue;
+    return res.send({ response: "OK" });
+});
+
+router.get("/getsessionvalue", (req, res) => {
+    return res.send({ response: req.session.sessionvalue });
+});
 
 module.exports = router;
